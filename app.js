@@ -16,7 +16,27 @@ const app = express();
 // CONNECT : Convertir la requete en tunnel TCP/IP
 
 app.get("/", (req, res) => {
-  res.send("BADARA SENE!");
+  res.send("GET mise en oeuvre");
+});
+
+app.get("/:id", (req, res) => {
+  const id = req.params.id;
+  res.send(`GET en cours ${id}`);
+});
+
+app.post("/", (req, res) => {
+  const id = req.params.id;
+  res.send(`POST en cours ${id}`);
+});
+
+app.put("/", (req, res) => {
+  const id = req.params.id;
+  res.send(`PUT en cours ${id}`);
+});
+
+app.delete("/", (req, res) => {
+  const id = req.params.id;
+  res.send(`DELETE en cours ${id}`);
 });
 
 const PORT = 3001;

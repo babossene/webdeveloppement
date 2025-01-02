@@ -29,17 +29,17 @@ app.post("/", (req, res) => {
   res.send(`POST en cours ${id}`);
 });
 
-app.put("/", (req, res) => {
+app.put("/:id", (req, res) => {
   const id = req.params.id;
-  res.send(`PUT en cours ${id}`);
+  res.json(`PUT en cours ${id}`);
 });
 
-app.delete("/", (req, res) => {
+app.delete("/:id", (req, res) => {
   const id = req.params.id;
-  res.send(`DELETE en cours ${id}`);
+  res.json(`DELETE en cours ${id}`);
 });
 
-const PORT = 3001;
+const PORT = 3002;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });

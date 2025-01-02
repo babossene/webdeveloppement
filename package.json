@@ -1,0 +1,14 @@
+{
+  "name": "nodejs-backend",
+  "version": "1.0.0",
+  "description": "A simple Node.js backend for a basic CRUD application",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "express": "^4.21.2"
+  }
+}
+

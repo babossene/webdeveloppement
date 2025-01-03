@@ -46,31 +46,63 @@ const agent = [
   }
 ]
 
-app.get("/", (req, res) => {
+const services = [
+  {
+    id: uuidv4(),
+    department: "information technology",
+    service: "Informatique",
+  },
+
+  {
+    id: uuidv4(),
+    department: "information technology",
+    service: "Informatique",
+  },
+
+  {
+    id: uuidv4(),
+    department: "information technology",
+    service: "Informatique",
+  }
+]
+
+
+app.get("/agent", (req, res) => {
   res.json(agent);
 });
 
-app.get("/:id", (req, res) => {
+app.get("/agent/:id", (req, res) => {
   const id = req.params.id;
-  const currentagent = agent.find(agent => agent.matricule === id);
+  const currentagent = agent.find(agent => agent.id === id);
   res.json(currentagent);
 });
 
 
 
-app.post("/", (req, res) => {
+app.post("/agent", (req, res) => {
   const id = req.params.id;
   res.send(`POST en cours de mise en oeuvre ${id}`);
 });
 
-app.put("/:id", (req, res) => {
+app.put("agent/:id", (req, res) => {
   const id = req.params.id;
   res.json(`PUT en cours de mise en oeuvres ${id}`);
 });
 
-app.delete("/:id", (req, res) => {
+app.delete("agent/:id", (req, res) => {
   const id = req.params.id;
   res.json(`DELETE en cours de mise en oeuvre ${id}`);
+});
+
+// home page
+app.get("/services", (req, res) => {
+  res.json(services);
+});
+
+app.get("/services/:id", (req, res) => {
+  const id = req.params.id;
+  const currentServices = serices.find(services => services.id === id);
+  res.json(currentServices);
 });
 
 const PORT = 3002;

@@ -4,6 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 //inicialiser l'application en mode ExpressJS
 const app = express();
+const { v4: uuidv4 } = require("uuid");
 //les verbes 
 // GET : Recuperr une resssource ou une parities de ressource
 // POST : Creer une ressource
@@ -15,28 +16,61 @@ const app = express();
 // TRACE : Retourner les entetes d'une ressource
 // CONNECT : Convertir la requete en tunnel TCP/IP
 
+// FAKE DATABASE : simuler une base de donnees
+const agent = [
+  {
+    matricule: uuidv4(),
+    nom: "SENE",
+    prenom: "Badara",
+    age: 25,
+    email: "sene@badara.com",
+    service: "Informatique",
+  },
+
+  {
+    matricule: uuidv4(),
+    nom: "NESE",
+    prenom: "dara",
+    age: 25,
+    email: "sene@dara.com",
+    service: "Informatique",
+  },
+
+  {
+    matricule: uuidv4(),
+    nom: "SENE",
+    prenom: "Bada",
+    age: 25,
+    email: "sene@bada.com",
+    service: "Info",
+  }
+]
+
 app.get("/", (req, res) => {
-  res.send("GET mise en oeuvre");
+  res.json(agent);
 });
 
 app.get("/:id", (req, res) => {
   const id = req.params.id;
-  res.send(`GET en cours ${id}`);
+  const currentagent = agent.find(agent => agent.matricule === id);
+  res.json(currentagent);
 });
+
+
 
 app.post("/", (req, res) => {
   const id = req.params.id;
-  res.send(`POST en cours ${id}`);
+  res.send(`POST en cours de mise en oeuvre ${id}`);
 });
 
 app.put("/:id", (req, res) => {
   const id = req.params.id;
-  res.json(`PUT en cours ${id}`);
+  res.json(`PUT en cours de mise en oeuvres ${id}`);
 });
 
 app.delete("/:id", (req, res) => {
   const id = req.params.id;
-  res.json(`DELETE en cours ${id}`);
+  res.json(`DELETE en cours de mise en oeuvre ${id}`);
 });
 
 const PORT = 3002;

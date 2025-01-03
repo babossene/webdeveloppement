@@ -3,7 +3,6 @@ const express = require("express");
 //acceder a la librairi bodyParser vos requetes/reponse
 const bodyParser = require("body-parser");
 //inicialiser l'application en mode ExpressJS
-const app = express();
 const { v4: uuidv4 } = require("uuid");
 //les verbes 
 // GET : Recuperr une resssource ou une parities de ressource
@@ -17,55 +16,11 @@ const { v4: uuidv4 } = require("uuid");
 // CONNECT : Convertir la requete en tunnel TCP/IP
 
 // FAKE DATABASE : simuler une base de donnees
-const agent = [
-  {
-    matricule: uuidv4(),
-    nom: "SENE",
-    prenom: "Badara",
-    age: 25,
-    email: "sene@badara.com",
-    service: "Informatique",
-  },
 
-  {
-    matricule: uuidv4(),
-    nom: "NESE",
-    prenom: "dara",
-    age: 25,
-    email: "sene@dara.com",
-    service: "Informatique",
-  },
 
-  {
-    matricule: uuidv4(),
-    nom: "SENE",
-    prenom: "Bada",
-    age: 25,
-    email: "sene@bada.com",
-    service: "Info",
-  }
-]
-
-const services = [
-  {
-    id: uuidv4(),
-    department: "information technology",
-    service: "Informatique",
-  },
-
-  {
-    id: uuidv4(),
-    department: "information technology",
-    service: "Informatique",
-  },
-
-  {
-    id: uuidv4(),
-    department: "information technology",
-    service: "Informatique",
-  }
-]
-
+const agent = require('./databases/agent.db.js');
+const services = require('./databases/services.db.js');
+const app = express();
 
 app.get("/agent", (req, res) => {
   res.json(agent);
